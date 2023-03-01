@@ -1,6 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import Button from "@mui/material/Button";
+ 
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,18 @@ function App() {
         >
           Learn React
         </a>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          style={{ borderRadius: 20 }}
+        >
+          Hola mundo
+        </Button>
+        <Button variant="contained" color="primary">
+  Hola mundo
+</Button>
+
       </header>
     </div>
   );
