@@ -1,30 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { DataContext } from "../../context/DataContext";
 import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
   List,
   ListItem,
   ListItemText,
   Divider,
   ListItemButton,
 } from "@mui/material";
+import { getOneCrypto } from "../../redux/actions";
 
 const Detail = () => {
-  const { cryptoDetail, setSelectedCrypto } = useContext(DataContext);
 
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+  const cryptoDetail = useSelector((state) => state.cryptoDetail)
+
   useEffect(() => {
-    console.log(id);
-    setSelectedCrypto(id);
+    dispatch(getOneCrypto(id))
     console.log(cryptoDetail);
-  }, []);
+  }, [dispatch])
 
   const style = {
     width: '100%',
@@ -34,7 +30,7 @@ const Detail = () => {
 
   return (
     <div>
-      <h3>Cryptocurrencies</h3>
+      <h3>Cryptocurrencies App</h3>
       <List sx={style} component="nav" aria-label="mailbox folders">
       <ListItem >
         <ListItemText primary={`Rank: ${cryptoDetail?.rank}`} />

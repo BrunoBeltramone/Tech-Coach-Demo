@@ -1,23 +1,30 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   List,
   ListItem,
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { DataContext } from "../../context/DataContext";
+import { getAllCrypto } from "../../redux/actions";
 
 const CryptoList = () => {
 
-  const { cryptocurrencies, setSelectedCrypto } = useContext(DataContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCrypto())
+  }, [dispatch])
+
+  const cryptocurrencies = useSelector((state) => state.cryptocurrencies)
 
   return (
     <div>
-      <h1 style={{textAlign:"center"}}>Cryptocurrencies</h1>
+      <h1 style={{textAlign:"center"}}>Cryptocurrencies App (with Redux)</h1>
       <List>
         {cryptocurrencies?.map((c) => (
           <ListItem key={c.name}>
-            <ListItemButton onClick={() => setSelectedCrypto(c.id)} href={`/detail/${c.id}`} >
+            <ListItemButton href={`/detail/${c.id}`} >
               <ListItemText sx={{ width: "50px", textAlign: "center" }}>
                  {c.rank}
               </ListItemText>
