@@ -1,41 +1,36 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   List,
   ListItem,
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { DataContext } from "../../context/DataContext";
 
 const CryptoList = () => {
-
-  const { cryptocurrencies, setSelectedCrypto } = useContext(DataContext);
 
   return (
     <div>
       <h1 style={{textAlign:"center"}}>Cryptocurrencies</h1>
       <List>
-        {cryptocurrencies?.map((c) => (
-          <ListItem key={c.name}>
-            <ListItemButton onClick={() => setSelectedCrypto(c.id)} href={`/detail/${c.id}`} >
+          <ListItem >
+            <ListItemButton>
               <ListItemText sx={{ width: "50px", textAlign: "center" }}>
-                 {c.rank}
+                 rank
               </ListItemText>
               <ListItemText sx={{ width: "100px", textAlign: "center" }}>
-                 {c.name}
+                 name
               </ListItemText>
               <ListItemText sx={{ width: "100px", textAlign: "center" }}>
-                {c.symbol}
+                symbol
               </ListItemText>
               <ListItemText sx={{ width: "100px", textAlign: "center" }}>
-                $ {c.price.toFixed(2)}
+                price
               </ListItemText>
               <ListItemText sx={{ width: "100px", textAlign: "center" }}>
-                {c.priceChange1d} %
+                price Change
               </ListItemText>
             </ListItemButton>
           </ListItem>
-        ))}
       </List>
     </div>
   );
