@@ -68,7 +68,7 @@ const Detail = () => {
       </ListItem>
       <Divider light />
       <ListItem >
-        <ListItemText primary={`7d% :  ${ cryptoDetail?.priceChange1w}%`} />
+        <ListItemText primary={`7d% :  ${ cryptoDetail?.priceChange1w}% `} />
       </ListItem>
     </List>
     </div>
