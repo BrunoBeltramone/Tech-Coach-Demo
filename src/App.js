@@ -1,37 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Button from "@mui/material/Button";
- 
+import { Route, Routes } from "react-router-dom";
+import { DataProvider } from "./context/DataContext";
+import { Container } from "@mui/material";
+import CryptoList from "./components/List/List";
+import Detail from "./components/Detail/Detail";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          style={{ borderRadius: 20 }}
-        >
-          Hola mundo
-        </Button>
-        <Button variant="contained" color="primary">
-  Hola mundo
-</Button>
-
-      </header>
-    </div>
+    <DataProvider>
+      <Container>
+        <Routes>
+          <Route path="/" element={<CryptoList />} />
+          <Route path="/Detail/:id" element={<Detail />} />
+        </Routes>
+      </Container>
+    </DataProvider>
   );
 }
 
