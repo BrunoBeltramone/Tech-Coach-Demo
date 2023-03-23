@@ -10,7 +10,7 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     fetch(
-      "https://api.coinstats.app/public/v1/coins?skip=0&limit=10&currency=USD"
+      "https://api.coinstats.app/public/v1/coins?skip=0&limit=30&currency=USD"
     )
       .then((response) => response.json())
       .then((data) => setCryptocurrencies(data.coins));
