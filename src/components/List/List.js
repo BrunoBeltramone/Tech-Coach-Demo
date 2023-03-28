@@ -11,17 +11,21 @@ const CryptoList = () => {
 
   const { cryptocurrencies, setSelectedCrypto } = useContext(DataContext);
 
+  const handleClick = (id) => {
+    setSelectedCrypto(id);
+  };
+
   return (
     <div>
       <h1 style={{textAlign:"center"}}>Cryptocurrencies</h1>
       <List>
         {cryptocurrencies?.map((c) => (
           <ListItem key={c.name}>
-            <ListItemButton onClick={() => setSelectedCrypto(c.id)} href={`/detail/${c.id}`} >
+            <ListItemButton href={`/detail/${c.id}`} onClick={() => handleClick(c.id)} >
               <ListItemText sx={{ width: "50px", textAlign: "center" }}>
                  {c.rank}
               </ListItemText>
-              <ListItemText sx={{ width: "100px", textAlign: "center" }}>
+              <ListItemText sx={{ width: "100px", textAlign: "center" }} id={c.name}>
                  {c.name}
               </ListItemText>
               <ListItemText sx={{ width: "100px", textAlign: "center" }}>

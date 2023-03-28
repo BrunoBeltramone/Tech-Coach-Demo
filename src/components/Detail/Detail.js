@@ -15,9 +15,7 @@ const Detail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id);
     setSelectedCrypto(id);
-    console.log(cryptoDetail);
   }, []);
 
   const style = {
@@ -28,7 +26,7 @@ const Detail = () => {
 
   return (
     <div>
-      <h3>Cryptocurrencies</h3>
+      <h1 style={{textAlign:"center"}}>Crypto Detail</h1>
       {cryptoDetail === [] ?  "" : (
         <List sx={style} component="nav" aria-label="mailbox folders">
           <ListItem>
